@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TuzhiForPdfbox:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TuzhiForPdfbox_jar</output-path>
+    <root id="archive" name="TuzhiForPdfbox.jar">
+      <element id="module-output" name="TuzhiForPdfbox" />
+      <element id="extracted-dir" path="D:/pdfbox-2.0.21-src/pdfbox-2.0.21/pdfbox/target/pdfbox-2.0.21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/pdfbox-2.0.21-src/pdfbox-2.0.21/tools/target/pdfbox-tools-2.0.21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/pdfbox-2.0.21-src/pdfbox-2.0.21/fontbox/target/fontbox-2.0.21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/commons-logging-1.2-bin/commons-logging-1.2/commons-logging-1.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

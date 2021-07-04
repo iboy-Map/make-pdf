@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TuzhiForPdfbox:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/MyPicViewer.java" line="401" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c0305573-f53f-4033-8cea-b0bc2e266d43" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/BackgroundImageJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TuzhiForPdfbox_jar/TuzhiForPdfbox.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TuzhiForPdfbox_jar/TuzhiForPdfbox.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/CustomGraphicsStreamEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/CustomGraphicsStreamEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/Map.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyFileChooser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyFileChooser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyFilterWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyFilterWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$MapCatalogueType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$MapCatalogueType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$ToolbarButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer$ToolbarButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/MyPicViewer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ScrollablePicture$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ScrollablePicture$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ScrollablePicture$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ScrollablePicture$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ScrollablePicture.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ScrollablePicture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ToolBarStatusFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ToolBarStatusFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$MESSURE_TYPE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture$MESSURE_TYPE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TuzhiForPdfbox/ZoomablePicture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomGraphicsStreamEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomGraphicsStreamEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyPicViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPicViewer.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/TuzhiForPdfbox$MyPicViewer.ic" NAME="MyPicViewer Coverage Results" MODIFIED="1608172055320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MyPicViewer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="272" column="151" selection-start-line="272" selection-start-column="151" selection-end-line="272" selection-end-column="151" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3121#3122#0" expanded="true" />
+                <element signature="e#3173#3174#0" expanded="true" />
+                <element signature="e#18620#18621#0" expanded="true" />
+                <element signature="e#18665#18666#0" expanded="true" />
+                <element signature="e#35847#36000#0" expanded="true" />
+                <element signature="e#35999#36000#0" expanded="true" />
+                <element signature="e#82348#82349#0" expanded="true" />
+                <element signature="e#82390#82391#0" expanded="true" />
+                <element signature="e#82455#82456#0" expanded="true" />
+                <element signature="e#82498#82499#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DataUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="206" column="28" selection-start-line="206" selection-start-column="28" selection-end-line="206" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>RemovePopWindow</find>
+      <find>picViewer</find>
+      <find>createToolBarButtonsForNewVersion</find>
+      <find>GetQueryField</find>
+      <find>QueryStringFunction</find>
+      <find>GetQueryFieldForNewVersion</find>
+      <find>load</find>
+      <find>搜索</find>
+      <find>停止自动切图</find>
+      <find>readytrans</find>
+      <find>readytrans透明</find>
+      <find>intrans</find>
+      <find>maps</find>
+      <find>OpenOldVersionElectricAtlas</find>
+      <find>LoadNextMapType</find>
+      <find>FindNextMapList</find>
+      <find>main</find>
+      <find>ImageIcon</find>
+      <find>开始自动切图</find>
+      <find>OpenNewVersionElectricAtlas</find>
+      <find>MyPicViewer</find>
+      <find>OpenOldVersionElectricAtlasForNewVersion</find>
+      <find>LoadNextMapTypeForNewVersion</find>
+      <find>GETPAGE</find>
+      <find>RefreshDimension</find>
+      <find>xit</find>
+      <find>EXIT_ON_CLOSE</find>
+      <find>drawimage</find>
+      <find>空间</find>
+      <find>paint</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/ImageViewerFrame.java" />
+        <option value="$PROJECT_DIR$/src/EagleBrowser1.java" />
+        <option value="$PROJECT_DIR$/src/MyFileChooser.java" />
+        <option value="$PROJECT_DIR$/src/PointF.java" />
+        <option value="$PROJECT_DIR$/src/UndecoratedFrame.java" />
+        <option value="$PROJECT_DIR$/src/XZQTree.java" />
+        <option value="$PROJECT_DIR$/src/DataUtil.java" />
+        <option value="$PROJECT_DIR$/src/DrawGeometry.java" />
+        <option value="$PROJECT_DIR$/src/MyIntPoint.java" />
+        <option value="$PROJECT_DIR$/src/Map.java" />
+        <option value="$PROJECT_DIR$/src/CustomGraphicsStreamEngine.java" />
+        <option value="$PROJECT_DIR$/src/BackgroundImageJFrame.java" />
+        <option value="$PROJECT_DIR$/src/MyPicViewer.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-11" />
+    <option name="y" value="112" />
+    <option name="width" value="1612" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TuzhiForPdfbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TuzhiForPdfbox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TuzhiForPdfbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TuzhiForPdfbox" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TuzhiForPdfbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TuzhiForPdfbox" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TuzhiForPdfbox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TuzhiForPdfbox" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="MyPicViewer.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1624539882589" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../code/TuZhiDesktop" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code\TuzhiForPdfbox\out\production\TuzhiForPdfbox\icons" />
+      <recent name="D:\Code\TuzhiForPdfbox\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\TuzhiForPdfbox\out\production\TuzhiForPdfbox\icons" />
+      <recent name="D:\Code\TuzhiForPdfbox\src\icons" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MyPicViewer">
+    <configuration name="CustomGraphicsStreamEngine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CustomGraphicsStreamEngine" />
+      <module name="TuzhiForPdfbox" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="TuzhiForPdfbox" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyPicViewer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyPicViewer" />
+      <module name="TuzhiForPdfbox" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UndecoratedFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UndecoratedFrame" />
+      <module name="TuzhiForPdfbox" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.CustomGraphicsStreamEngine" />
+      <item itemvalue="Application.MyPicViewer" />
+      <item itemvalue="Application.UndecoratedFrame" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MyPicViewer" />
+        <item itemvalue="Application.CustomGraphicsStreamEngine" />
+        <item itemvalue="Application.UndecoratedFrame" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c0305573-f53f-4033-8cea-b0bc2e266d43" name="Default Changelist" comment="" />
+      <created>1600740107620</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600740107620</updated>
+      <workItem from="1600740110531" duration="9733000" />
+      <workItem from="1600845418724" duration="17317000" />
+      <workItem from="1600919847571" duration="2598000" />
+      <workItem from="1602210071213" duration="7456000" />
+      <workItem from="1602642521745" duration="29813000" />
+      <workItem from="1604394663499" duration="1767000" />
+      <workItem from="1604654014513" duration="366000" />
+      <workItem from="1606697558106" duration="3052000" />
+      <workItem from="1607908280389" duration="28321000" />
+      <workItem from="1609750536931" duration="23081000" />
+      <workItem from="1610875097967" duration="926000" />
+      <workItem from="1611045280105" duration="25907000" />
+      <workItem from="1613630776214" duration="19963000" />
+      <workItem from="1614331306631" duration="20411000" />
+      <workItem from="1614906807392" duration="18205000" />
+      <workItem from="1615369576351" duration="8552000" />
+      <workItem from="1615793160838" duration="5219000" />
+      <workItem from="1617001785855" duration="2315000" />
+      <workItem from="1617759317788" duration="33632000" />
+      <workItem from="1619335543660" duration="5632000" />
+      <workItem from="1620290556624" duration="594000" />
+      <workItem from="1622426879357" duration="18744000" />
+      <workItem from="1624328151716" duration="8932000" />
+      <workItem from="1624538182688" duration="1701000" />
+      <workItem from="1624593903401" duration="5520000" />
+      <workItem from="1624854937807" duration="3815000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="303572000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Alibaba Cloud Explorer" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286334" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.2646421" />
+      <window_info anchor="bottom" id="Alibaba Cloud View" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Alibaba Log Console" order="9" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32995737" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/jdk/internal/loader/ClassLoaders.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/jdk/internal/loader/BuiltinClassLoader.java" />
+    <entry file="jar://D:/pdfbox-2.0.21-src/pdfbox-2.0.21/pdfbox/target/pdfbox-2.0.21.jar!/org/apache/pdfbox/contentstream/PDFStreamEngine.class" />
+    <entry file="file://$PROJECT_DIR$/TuzhiForPdfbox.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EagleBrowser1.java" />
+    <entry file="file://$PROJECT_DIR$/src/MyFileChooser.java" />
+    <entry file="file://$PROJECT_DIR$/../PdfViewer-master/PdfViewer/PdfViewer.cs" />
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.desktop/java/awt/event/MouseEvent.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.desktop/java/awt/Point.java" />
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ImageViewerFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UndecoratedFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="81" column="8" selection-start-line="81" selection-start-column="8" selection-end-line="86" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icons/icon_top.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icons/list-add.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icons/list-remove.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icons/system-log-out.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icons/document-open.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icons/go-previous.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/icons/go-next.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BackgroundImageJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="9" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyIntPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding>
+            <element signature="e#111#112#0" expanded="true" />
+            <element signature="e#142#143#0" expanded="true" />
+            <element signature="e#168#169#0" expanded="true" />
+            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#217#218#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DrawGeometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <element signature="e#340#341#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#423#424#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#486#487#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/XZQTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#2412#2413#0" expanded="true" />
+            <element signature="e#2439#2440#0" expanded="true" />
+            <element signature="e#2708#2709#0" expanded="true" />
+            <element signature="e#2735#2736#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PointF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/src.zip!/javax/swing/AbstractButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="1924" column="16" selection-start-line="1924" selection-start-column="16" selection-end-line="1924" selection-end-column="16" />
+          <folding>
+            <element signature="e#68197#68198#0" expanded="true" />
+            <element signature="e#68254#68255#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/src.zip!/java/awt/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="1754" column="29" selection-start-line="1754" selection-start-column="29" selection-end-line="1754" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/TuzhiForPdfbox/BackgroundImageJFrame.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="206" column="28" selection-start-line="206" selection-start-column="28" selection-end-line="206" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="3309" column="16" selection-start-line="3309" selection-start-column="16" selection-end-line="3309" selection-end-column="16" />
+          <folding>
+            <element signature="e#114480#114481#0" expanded="true" />
+            <element signature="e#114527#114528#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomGraphicsStreamEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding>
+            <element signature="e#5593#6916#0" />
+            <element signature="e#23456#24847#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyPicViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="272" column="151" selection-start-line="272" selection-start-column="151" selection-end-line="272" selection-end-column="151" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3121#3122#0" expanded="true" />
+            <element signature="e#3173#3174#0" expanded="true" />
+            <element signature="e#18620#18621#0" expanded="true" />
+            <element signature="e#18665#18666#0" expanded="true" />
+            <element signature="e#35847#36000#0" expanded="true" />
+            <element signature="e#35999#36000#0" expanded="true" />
+            <element signature="e#82348#82349#0" expanded="true" />
+            <element signature="e#82390#82391#0" expanded="true" />
+            <element signature="e#82455#82456#0" expanded="true" />
+            <element signature="e#82498#82499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>TuzhiForPdfbox:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>TuzhiForPdfbox</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
