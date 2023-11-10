@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 
-import jdk.nashorn.api.tree.ForInLoopTree;
 import org.apache.pdfbox.contentstream.PDFGraphicsStreamEngine;
 import org.apache.pdfbox.contentstream.PDFStreamEngine;
 import org.apache.pdfbox.cos.*;
@@ -102,28 +101,28 @@ public class CustomGraphicsStreamEngine extends PDFGraphicsStreamEngine
             System.out.println("path: "+path);
         }*/
 
-
-        /* 临沧市电子地图集
+        String FolderPath = "E:\\";//"C:\\Users\\54286\\Desktop\\";
+        //临沧市电子地图集
         //要遍历的路径
         String BasePath = FolderPath + "临沧市地图集批量入库文件夹";
         //要遍历的路径
         String AndroidNewPath = FolderPath + "临沧市地图集安卓";
         //要遍历的路径
-        String NewPath = FolderPath + "临沧市地图集";*/
+        String NewPath = FolderPath + "临沧市地图集";
 
 
-        String FolderPath = "E:\\";//"C:\\Users\\54286\\Desktop\\";
+        /*String FolderPath = "E:\\";//"C:\\Users\\54286\\Desktop\\";
         // 云南省电子地图集
         //要遍历的路径
         String BasePath = FolderPath + "省厅展示电子地图集入库文件夹";
         //要遍历的路径
         String AndroidNewPath = FolderPath + "省厅展示电子地图集安卓";
         //要遍历的路径
-        String NewPath = FolderPath + "省厅展示电子地图集";
+        String NewPath = FolderPath + "省厅展示电子地图集";*/
 
-        ParseDTJFolderForAndroid(BasePath, AndroidNewPath, FolderPath);
+        //ParseDTJFolderForAndroid(BasePath, AndroidNewPath, FolderPath);
 
-        //ParseDTJFolderForWindows(BasePath, NewPath);
+        ParseDTJFolderForWindows(BasePath, NewPath);
 
         /*String geoinfo = GetGeoInfoFromPDFFile("D:\\test.pdf");
         System.out.println(geoinfo);*/
@@ -716,14 +715,17 @@ public class CustomGraphicsStreamEngine extends PDFGraphicsStreamEngine
             for(File f : fs) {
                 String FileName = f.toString();
                 if (!f.isDirectory() && f.toString().contains(".pdf")) {
-                    /*if (FolderName.contains("社会经济图组") || FolderName.contains("资源与环境图组")){
-                        SavePDFWithoutGeoInfoForAndroid(FolderName, FileName, NewPath, ParentNodeName, f, bw, FolderPath);
+                    if (FolderName.contains("社会与经济") || FolderName.contains("资源与环境") || FolderName.contains("临沧概览")){
+                        if ((FileName.contains( "行政区划") || FileName.contains( "旅游交通")))
+                            SavePDFWithGeoInfoForAndroid(FolderName, FileName, NewPath, ParentNodeName, f, bw, FolderPath);
+                        else
+                            SavePDFWithoutGeoInfoForAndroid(FolderName, FileName, NewPath, ParentNodeName, f, bw, FolderPath);
                     }
                     else {
                         SavePDFWithGeoInfoForAndroid(FolderName, FileName, NewPath, ParentNodeName, f, bw, FolderPath);
-                    }*/
+                    }
 
-                    SavePDFWithoutGeoInfoForAndroid(FolderName, FileName, NewPath, ParentNodeName, f, bw, FolderPath);
+                    //SavePDFWithoutGeoInfoForAndroid(FolderName, FileName, NewPath, ParentNodeName, f, bw, FolderPath);
                 }
                 else{
                     bw.write(ParentNodeName + "," + FileName.substring(FileName.lastIndexOf("\\") + 1) + "," + GetMapType(ParentNodeName) + "," + " ");
@@ -761,10 +763,12 @@ public class CustomGraphicsStreamEngine extends PDFGraphicsStreamEngine
             String PngName = pngName.substring(pngName.lastIndexOf("\\") + 1, pngName.lastIndexOf(".png")).trim();
             //String MapType = GetMapType(ParentNodeName);
             String PngPath = NewPath + "\\" + pngName;
-
+            String NewFilePath = PngPath.replace("png","xml");
+            // 开始复制
+            copy(new File(PngPath), new File(NewFilePath));
             doc.close();
             //bw.write(ParentNodeName + "," + PngName + "," + MapType + "," + PngPath);
-            bw.write(ParentNodeName + "," + PngName + "," + GetMapType(ParentNodeName) + "," + PngPath + ", ");
+            bw.write(ParentNodeName + "," + PngName + "," + GetMapType(ParentNodeName) + "," + NewFilePath + ", ");
             bw.newLine();
         }catch (Exception e){
             System.out.println("在处理带有空间信息的PDF文件过程中出错" + "\n" + e.toString());
@@ -788,22 +792,42 @@ public class CustomGraphicsStreamEngine extends PDFGraphicsStreamEngine
             String PngName = pngName.substring(pngName.lastIndexOf("\\") + 1, pngName.lastIndexOf(".png")).trim();
             //String MapType = GetMapType(ParentNodeName);
             String PngPath = NewPath + "\\" + pngName;
+            String NewFilePath = PngPath.replace("png","xml");
+
+            // 开始复制
+            copy(new File(PngPath), new File(NewFilePath));
 
             doc.close();
             //bw.write(ParentNodeName + "," + PngName + "," + MapType + "," + PngPath);
             if (GeoInfo.length <= 1)
             {
                 //bw.write(ParentNodeName + "," + PngName + "," + MapTypeCount + "," + PngPath + ", " + ", " + ", " + ", ");
-                bw.write(ParentNodeName + "," + PngName + "," + GetMapType(ParentNodeName) + "," + PngPath + ", " + ", " + ", " + ", ");
+                bw.write(ParentNodeName + "," + PngName + "," + GetMapType(ParentNodeName) + "," + NewFilePath + ", " + ", " + ", " + ", ");
             }
             else
             {
                 //bw.write(ParentNodeName + "," + PngName + "," + MapTypeCount + "," + PngPath + "," + GeoInfo[0] + "," + GeoInfo[1] + "," + GeoInfo[2] + "," + GeoInfo[3]);
-                bw.write(ParentNodeName + "," + PngName + "," + GetMapType(ParentNodeName) + "," + PngPath + "," + GeoInfo[0] + "," + GeoInfo[1] + "," + GeoInfo[2] + "," + GeoInfo[3]);
+                bw.write(ParentNodeName + "," + PngName + "," + GetMapType(ParentNodeName) + "," + NewFilePath + "," + GeoInfo[0] + "," + GeoInfo[1] + "," + GeoInfo[2] + "," + GeoInfo[3]);
             }
             bw.newLine();
         }catch (Exception e){
             System.out.println("在处理带有空间信息的PDF文件过程中出错" + "\n" + e.toString());
+        }
+    }
+
+    private static void copy(File inputFile, File outputFile) throws Exception{
+        FileInputStream  fis = new FileInputStream(inputFile);
+        FileOutputStream fos = new FileOutputStream(outputFile);
+        copy(fis,fos);
+        fis.close();
+        fos.close();
+    }
+
+    private static void copy(InputStream ips,OutputStream ops) throws Exception{
+        int len = 0;
+        byte[] buf = new byte[1024];
+        while((len = ips.read(buf)) != -1){
+            ops.write(buf,0,len);
         }
     }
 
@@ -825,7 +849,16 @@ public class CustomGraphicsStreamEngine extends PDFGraphicsStreamEngine
                     else {
                         SavePDFWithGeoInfoForWindows(FolderName, FileName, NewPath, ParentNodeName, f, bw);
                     }*/
-                    SavePDFWithoutGeoInfoForWindows(FolderName, FileName, NewPath, ParentNodeName, f, bw);
+                    if (FolderName.contains("社会与经济") || FolderName.contains("资源与环境") || FolderName.contains("临沧概览")){
+                        if ((FileName.contains( "行政区划") || FileName.contains( "旅游交通")))
+                            SavePDFWithGeoInfoForWindows(FolderName, FileName, NewPath, ParentNodeName, f, bw);
+                        else
+                            SavePDFWithoutGeoInfoForWindows(FolderName, FileName, NewPath, ParentNodeName, f, bw);
+                    }
+                    else {
+                        SavePDFWithGeoInfoForWindows(FolderName, FileName, NewPath, ParentNodeName, f, bw);
+                    }
+                    //SavePDFWithoutGeoInfoForWindows(FolderName, FileName, NewPath, ParentNodeName, f, bw);
                 }
                 else{
                     //bw.write(ParentNodeName + "," + FileName.substring(FileName.lastIndexOf("\\") + 1) + "," + MapTypeCount + "," + " ");
@@ -848,43 +881,35 @@ public class CustomGraphicsStreamEngine extends PDFGraphicsStreamEngine
         }
     }
 
-    /*private static String GetMapType(String ParentNodeName){
+    private static String GetMapType(String ParentNodeName){
         switch (ParentNodeName){
-            case "序图组":
+            case "临沧概览":
                 return "1";
-            case "资源与环境图组":
+            case "资源与环境":
                 return "2";
-            case "社会经济图组":
+            case "社会与经济":
                 return "3";
-            case "区域地理图组":
+            case "区域地理":
                 return "4";
-            case "县图":
+            case "沧源佤族自治县":
                 return "5";
-            case "各县城区图":
-                return "6";
-            case "各县影像图":
-                return "7";
-            case "乡镇图":
-                return "8";
-            case "临翔区":
-                return "9";
             case "凤庆县":
+                return "6";
+            case "耿马傣族佤族自治县":
+                return "7";
+            case "临翔区":
+                return "8";
+            case "双江拉祜族佤族布朗族傣族自治县":
+                return "9";
+            case "永德县":
                 return "10";
             case "云县":
                 return "11";
-            case "永德县":
-                return "12";
             case "镇康县":
-                return "13";
-            case "双江县":
-                return "14";
-            case "耿马县":
-                return "15";
-            case "沧源县":
-                return "16";
+                return "12";
         }
         return "0";
-    }*/
+    }
 
     /*private static String GetMapType(String ParentNodeName){
         switch (ParentNodeName){
@@ -940,7 +965,7 @@ public class CustomGraphicsStreamEngine extends PDFGraphicsStreamEngine
         return "0";
     }*/
 
-    private static String GetMapType(String ParentNodeName){
+    private static String GetMapType1(String ParentNodeName){
         switch (ParentNodeName){
             case "南亚东南亚图集":
                 return "1";

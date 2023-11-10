@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.*;
-import javax.swing.text.DefaultEditorKit;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -128,8 +127,14 @@ class ZoomablePicture extends JComponent {
         unload();
 
         this.picViewer = picViewer;
-        this.picViewer.btn_autoTrans.setText("开始自动切图");
-        this.picViewer.btn_autoTrans.setIcon(new ImageIcon(this.picViewer. getClass().getClassLoader().getResource("icons/readytrans透明.png")));
+        if (pts==null) {
+            this.picViewer.btn_autoTrans.setVisible(false);
+        }
+        else {
+            this.picViewer.btn_autoTrans.setVisible(true);
+            this.picViewer.btn_autoTrans.setText("开始自动切图");
+            this.picViewer.btn_autoTrans.setIcon(new ImageIcon(this.picViewer.getClass().getClassLoader().getResource("icons/readytrans透明.png")));
+        }
         //this.picViewer.btn_autoTrans.setIcon(new ImageIcon("icons/readytrans透明.png"));
         this.picViewer.setTitle(title);
 
@@ -261,7 +266,7 @@ class ZoomablePicture extends JComponent {
     }
 
     private void MouseClickFunction(MouseEvent e){
-        System.out.println(e.getButton());
+        System.out.println("看我的点击事件！" + e.getButton());
         if (e.getButton()==MouseEvent.BUTTON1) {
             if (!isThematicMap) {
                 Point ClickPt = e.getPoint();
@@ -289,7 +294,7 @@ class ZoomablePicture extends JComponent {
                         UndecoratedFrame.setSize(300, 50);
                         UndecoratedFrame.setLocation(e.getLocationOnScreen());
                         //UndecoratedFrame.setLocation(new Point(Integer.valueOf(Double.toString(ClickPt.x-CurrentMinX)), Integer.valueOf(Double.toString(ClickPt.y- CurrentMinY))));
-                        UndecoratedFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        UndecoratedFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                         setUndecoratedFrame(true);
                     }
                 } else {
@@ -299,7 +304,9 @@ class ZoomablePicture extends JComponent {
             }
         }
         else if (e.getButton()==MouseEvent.BUTTON3)
-            RemoveLastPtForPointCollection();
+        {
+            RemoveLastPtForPointCollection(e.getPoint().getX());
+        }
     }
 
     @Override
@@ -320,6 +327,7 @@ class ZoomablePicture extends JComponent {
 
     private void DrawPtsForPolygon(Graphics g){
         for (int i = 0; i < DrawedPts.size(); i++) {
+            System.out.println(DrawedPts.size());
             MyIntPoint ScreenLoc = GetScreenLocFromGeoLoc(DrawedPts.get(i));
             g.setColor(Color.RED);
             g.drawOval(ScreenLoc.getX()-10, ScreenLoc.getY()-10, 20, 20);
@@ -475,14 +483,20 @@ class ZoomablePicture extends JComponent {
         return new MyIntPoint(x, y);
     }
 
-    private void RemoveLastPtForPointCollection(){
-        if (DrawedPts.size() >= 1){
+    private double lastPtx;
+    private void RemoveLastPtForPointCollection(double Ptx){
+        if (DrawedPts.size() >= 1 && lastPtx != Ptx){
             DrawedPts.remove(DrawedPts.size()-1);
+            lastPtx = Ptx;
             repaint();
         }
     }
 
     private void AddPtToPointCollection(PointF pt){
+        for (int i = 0; i < DrawedPts.size(); i++) {
+            if (DrawedPts.get(i).getLat() == pt.getLat() && DrawedPts.get(i).getLong() == pt.getLong())
+                return;
+        }
         DrawedPts.add(pt);
         System.out.println("AddPtToPointCollection" + DrawedPts.size());
     }
@@ -515,8 +529,14 @@ class ZoomablePicture extends JComponent {
         CurrentMapTitle = title;
         CurrentMessureType = MESSURE_TYPE.NONE;
 
-        this.picViewer.btn_autoTrans.setText("开始自动切图");
-        this.picViewer.btn_autoTrans.setIcon(new ImageIcon(this.picViewer. getClass().getClassLoader().getResource("icons/readytrans透明.png")));
+        if (pts==null) {
+            this.picViewer.btn_autoTrans.setVisible(false);
+        }
+        else {
+            this.picViewer.btn_autoTrans.setVisible(true);
+            this.picViewer.btn_autoTrans.setText("开始自动切图");
+            this.picViewer.btn_autoTrans.setIcon(new ImageIcon(this.picViewer.getClass().getClassLoader().getResource("icons/readytrans透明.png")));
+        }
         //this.picViewer.btn_autoTrans.setIcon(new ImageIcon("icons/readytrans透明.png"));
         picViewer.setTitle(title);
         isAutoTrans = false;
@@ -993,11 +1013,12 @@ final class MyPicViewer extends ToolBarStatusFrame {
     public static List<XZQTree> xzqTrees;
     public static List<Map> maps;
     public static JFrame SearchWindow=null;
+    private static MyPicViewer myPicViewer = null;
 
     public static void main(String [] args) {
 
         /*mapList.add(new Map("", "序图组", 0, ""));
-        mapList.add(new Map("", "资源与环境图组", 0, ""));
+        mapList.add(new Map("", "资源与环境", 0, ""));
         mapList.add(new Map("", "社会经济图组", 0, ""));
         mapList.add(new Map("", "区域地理图组", 0, ""));
         mapList.add(new Map("序图组", "世界地图", 1, ""));
@@ -1021,6 +1042,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
         BaseFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);*/
 
         //OpenOldVersionElectricAtlas();
+        //OpenMidVersionElectricAtlas();
         OpenNewVersionElectricAtlas();
         //LoadNextMapTypeOneWindow(main_frame, mapList, FindNextMapList(mapList, ""));
         //new MyPicViewer("D:\\test.png");
@@ -1028,6 +1050,118 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
     private static void OpenNewVersionElectricAtlas(){
         maps = GetMapData();
+
+        /*for (int i = 0; i < maps.size(); i++) {
+            System.out.println(maps.get(i).getParentNode() + ", " + maps.get(i).getName());
+        }*/
+
+        List<XZQTree> xzqTrees = GetXZQTree();
+        //获取屏幕的尺寸
+        Dimension scrSize=Toolkit.getDefaultToolkit().getScreenSize();
+        System.out.println(scrSize.getWidth() + ", " + scrSize.getHeight());
+
+
+        BackgroundImageJFrame BaseFrame = new BackgroundImageJFrame();
+
+
+        //置顶小窗
+        JFrame main_frame = new JFrame();
+
+        main_frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:/lzyFile/白底LOGO1.png"));
+
+        main_frame.setAlwaysOnTop(true);
+
+        main_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        main_frame.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                //
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (myPicViewer==null || !myPicViewer.isVisible()){
+                    int MinPage = Integer.MAX_VALUE;
+                    int MinPageIndex = Integer.MAX_VALUE;
+                    for (int i = 0; i < maps.size(); i++) {
+                        System.out.println(i);
+                        System.out.println(GetPage(maps.get(i).getName()));
+                        System.out.println((maps.get(i).getName()));
+                        if (!maps.get(i).getPath().trim().equals(""))
+                        {
+                            if (maps.get(i).getPage() < MinPage)
+                            {
+                                MinPage = maps.get(i).getPage();
+                                MinPageIndex = i;
+                                System.out.println("lzy: " + maps.get(i).getPath());
+                            }
+                        }
+                    }
+                    System.out.println("lzy: " + maps.get(MinPageIndex).getPath());
+                    /*try {
+                        mcopy(new File(maps.get(MinPageIndex).getPath()), new File(maps.get(MinPageIndex).getPath().replace("xml", "png")));
+                    }
+                    catch (Exception ee){
+                        System.out.println(ee.toString());
+                    }*/
+                    myPicViewer = new MyPicViewer(maps.get(MinPageIndex).getPath(), maps.get(MinPageIndex).getName(), maps.get(MinPageIndex).getMapGeoInfo(), maps, true);
+                    myPicViewer.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    myPicViewer.setVisible(true);
+                    view.setZoomFactor(1);
+                    System.out.println("Windows Closed");
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+
+        LoadNextMapTypeForNewVersion(main_frame, FindNextMapList(""), BaseFrame);
+        //初始化窗体内容，此时parentNodeName为空，表示当前为根目录窗体
+        //LoadNextMapTypeForNewVersion(main_frame, FindNextMapList(""), BaseFrame);
+    }
+
+    private static void mcopy(File inputFile, File outputFile) throws Exception{
+        FileInputStream  fis = new FileInputStream(inputFile);
+        FileOutputStream fos = new FileOutputStream(outputFile);
+        copy(fis,fos);
+        fis.close();
+        fos.close();
+    }
+
+    private static void copy(InputStream ips,OutputStream ops) throws Exception{
+        int len = 0;
+        byte[] buf = new byte[1024];
+        while((len = ips.read(buf)) != -1){
+            ops.write(buf,0,len);
+        }
+    }
+
+    private static void OpenMidVersionElectricAtlas(){
+        maps = GetMapData();
+        List<XZQTree> xzqTrees = GetXZQTree();
         BackgroundImageJFrame BaseFrame = new BackgroundImageJFrame();
         BaseFrame.setVisible(true);
         int MinPage = Integer.MAX_VALUE;
@@ -1053,20 +1187,15 @@ final class MyPicViewer extends ToolBarStatusFrame {
         view.setZoomFactor(1);
     }
 
-    private static void OpenOldVersionElectricAtlasForNewVersion(MyPicViewer myPicViewer) {
-        maps = GetMapData();
+    private static void OpenOldVersionElectricAtlasForMidVersion(MyPicViewer myPicViewer) {
+        //maps = GetMapData();
 
         /*for (int i = 0; i < maps.size(); i++) {
             System.out.println(maps.get(i).getParentNode() + ", " + maps.get(i).getName());
         }*/
 
-        List<XZQTree> xzqTrees = GetXZQTree();
+        //List<XZQTree> xzqTrees = GetXZQTree();
         //获取屏幕的尺寸
-        Dimension scrSize=Toolkit.getDefaultToolkit().getScreenSize();
-        System.out.println(scrSize.getWidth() + ", " + scrSize.getHeight());
-
-
-        BackgroundImageJFrame BaseFrame = new BackgroundImageJFrame();
 
 
         if (SearchWindow == null){
@@ -1081,7 +1210,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
         }
 
         //初始化窗体内容，此时parentNodeName为空，表示当前为根目录窗体
-        LoadNextMapTypeForNewVersion(SearchWindow, FindNextMapList(""), myPicViewer);
+        LoadNextMapTypeForMidVersion(SearchWindow, FindNextMapList(""), myPicViewer);
     }
 
     private static void OpenOldVersionElectricAtlas() {
@@ -1320,7 +1449,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
     private void ss(){
         final List<Map> mapList = new ArrayList<>();
-        String [] nameStd = {"序图组","资源与环境图组","社会经济图组","区域地理图组"};
+        String [] nameStd = {"序图组","资源与环境","社会与经济","区域地理图组"};
         Dimension scrSize=Toolkit.getDefaultToolkit().getScreenSize();
         System.out.println(scrSize.getWidth() + ", " + scrSize.getHeight());
         JFrame main_frame = new JFrame();
@@ -1462,7 +1591,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
         }
     }
 
-    private static JPanel GetQueryFieldForNewVersion(JFrame frame, MyPicViewer myPicViewer){
+    private static JPanel GetQueryFieldForNewVersion(JFrame frame){
         JLabel label = new JLabel("查询：");
 
         //创建JTextField，16表示16列，用于JTextField的宽度显示而不是限制字符个数
@@ -1504,9 +1633,29 @@ final class MyPicViewer extends ToolBarStatusFrame {
                 if (map.getName().equals(QuriedMapName))
                 {
                     frame.setAlwaysOnTop(false);
-                    // TODO DD
-
-                    view.load(map.getPath(), map.getMapGeoInfo(), maps, myPicViewer, map.getName());
+                    if (myPicViewer==null || !myPicViewer.isVisible()) {
+                        frame.setVisible(false);
+                        /*try {
+                            mcopy(new File(map.getPath()), new File(map.getPath().replace("xml", "png")));
+                        }
+                        catch (Exception ee){
+                            System.out.println(ee.toString());
+                        }*/
+                        myPicViewer = new MyPicViewer(map.getPath(), map.getName(), map.getMapGeoInfo(), maps, true);
+                        myPicViewer.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                        myPicViewer.setVisible(true);
+                        view.setZoomFactor(1);
+                    }
+                    else
+                    {
+                        /*try {
+                            mcopy(new File(map.getPath()), new File(map.getPath().replace("xml", "png")));
+                        }
+                        catch (Exception ee){
+                            System.out.println(ee.toString());
+                        }*/
+                        view.load(map.getPath(), map.getMapGeoInfo(), maps, myPicViewer, map.getName());
+                    }
                     break;
                 }
             }
@@ -1557,6 +1706,12 @@ final class MyPicViewer extends ToolBarStatusFrame {
                 {
                     frame.setAlwaysOnTop(false);
                     frame.setEnabled(false);
+                    /*try {
+                        mcopy(new File(map.getPath()), new File(map.getPath().replace("xml", "png")));
+                    }
+                    catch (Exception ee){
+                        System.out.println(ee.toString());
+                    }*/
                     new MyPicViewer(map.getPath(), frame, map.getName(), map.getMapGeoInfo(), maps);
                     break;
                 }
@@ -1651,7 +1806,110 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
     }
 
-    private static void LoadNextMapTypeForNewVersion(JFrame main_frame, List<Map> currentMaps, MyPicViewer myPicViewer){
+    private static void LoadNextMapTypeForNewVersion(JFrame main_frame, List<Map> currentMaps, JFrame BaseFrame){
+        int size = currentMaps.size();
+        System.out.println(size);
+        if (size == 1 && !currentMaps.get(0).getPath().isEmpty()) {
+            //main_frame.setEnabled(false);
+            main_frame.setAlwaysOnTop(false);
+            main_frame.setVisible(false);
+
+            /*try {
+                mcopy(new File(maps.get(0).getPath()), new File(maps.get(0).getPath().replace("xml", "png")));
+            }
+            catch (Exception ee){
+                System.out.println(ee.toString());
+            }*/
+            myPicViewer = new MyPicViewer(maps.get(0).getPath(), maps.get(0).getName(), maps.get(0).getMapGeoInfo(), maps, true);
+            myPicViewer.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            myPicViewer.setVisible(true);
+            view.setZoomFactor(1);
+        }
+        else if (size == 0) {
+
+        }
+        else {
+            System.out.println("lzy");
+            JPanel jPanel = new JPanel();
+            int currentMapType = currentMaps.get(0).getMapType();
+            main_frame.getContentPane().removeAll();
+            Dimension scrSize = Toolkit.getDefaultToolkit().getScreenSize();
+            main_frame.setLayout(new FlowLayout(FlowLayout.CENTER));
+            //main_frame.setLayout(new BorderLayout());
+
+            // 将同层级的地图添加到JPanel中
+            for (int i = 0; i < size; i++) {
+                final String btName = currentMaps.get(i).getName();
+                JButton now = new JButton(btName);
+                now.setPreferredSize(new Dimension(200, 50));
+                //main_frame.add(now);
+                jPanel.add(now);
+                final String path = currentMaps.get(i).getPath();
+                final String Name = currentMaps.get(i).getName();
+                final PointF[] pts = currentMaps.get(i).getMapGeoInfo();
+                ActionListener listener = new ActionListener() {
+                    public void actionPerformed(ActionEvent event) {
+                        if (path.trim().length()!=0)
+                        {
+                            //main_frame.setEnabled(false);
+                            main_frame.setAlwaysOnTop(false);
+                            main_frame.setVisible(false);
+                            //myPicViewer = new MyPicViewer(path, main_frame, Name, pts, maps);
+                            /*try {
+                                mcopy(new File(path), new File(path.replace("xml", "png")));
+                            }
+                            catch (Exception ee){
+                                System.out.println(ee.toString());
+                            }*/
+                            myPicViewer = new MyPicViewer(path, Name, pts, maps, true);
+                            myPicViewer.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                            myPicViewer.setVisible(true);
+                            view.setZoomFactor(1);
+                        }
+                        else {
+                            List<Map> newMaps = FindNextMapList(btName);
+                            LoadNextMapTypeForNewVersion(main_frame, newMaps, BaseFrame);
+                        }
+                    }
+                };
+                now.addActionListener(listener);
+            }
+
+            // 在除了主索引层外的其他层中添加返回按钮
+            int currentHeight = size * 50 + size * 6;
+            main_frame.setTitle("临沧市地图集");
+            if (currentMapType > 0) {
+                main_frame.setTitle(currentMaps.get(0).getParentNode());
+                currentHeight = currentHeight + 50;
+                JButton now = new JButton("返回");
+                now.setPreferredSize(new Dimension(200, 50));
+                //main_frame.add(now);
+                jPanel.add(now);
+                ActionListener listener = new ActionListener() {
+                    public void actionPerformed(ActionEvent event) {
+                        List<Map> newMaps = FindParentMapList(maps, currentMaps.get(0).getParentNode());
+                        System.out.println(newMaps.size() + ", " + currentMaps.get(0).getParentNode());
+                        main_frame.getContentPane().removeAll();
+                        LoadNextMapTypeForNewVersion(main_frame, newMaps, BaseFrame);
+                    }
+                };
+                now.addActionListener(listener);
+            }
+            jPanel.setPreferredSize(new Dimension(260, currentHeight+10));
+            //jPanel.setLocation(scrSize.width / 2 - 130, scrSize.height / 2 - currentHeight / 2);
+            JPanel QueryPanel = GetQueryFieldForNewVersion(main_frame);
+            main_frame.add(QueryPanel);
+            main_frame.add(jPanel);
+            System.out.println(jPanel.getPreferredSize().getHeight());
+            main_frame.setSize(260, (int)jPanel.getPreferredSize().getHeight() + 50 + 50);
+            main_frame.setLocation(scrSize.width / 2 - 130, scrSize.height / 2 - currentHeight / 2);
+            main_frame.repaint();
+            BaseFrame.setVisible(true);
+            main_frame.setVisible(true);
+        }
+    }
+
+    private static void LoadNextMapTypeForMidVersion(JFrame main_frame, List<Map> currentMaps, MyPicViewer myPicViewer){
         int size = currentMaps.size();
         System.out.println(size);
         if (size == 1 && !currentMaps.get(0).getPath().isEmpty()) {
@@ -1693,7 +1951,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
                         }
                         else {
                             List<Map> newMaps = FindNextMapList(btName);
-                            LoadNextMapTypeForNewVersion(main_frame, newMaps, myPicViewer);
+                            LoadNextMapTypeForMidVersion(main_frame, newMaps, myPicViewer);
                         }
                     }
                 };
@@ -1715,14 +1973,14 @@ final class MyPicViewer extends ToolBarStatusFrame {
                         List<Map> newMaps = FindParentMapList(maps, currentMaps.get(0).getParentNode());
                         System.out.println(newMaps.size() + ", " + currentMaps.get(0).getParentNode());
                         main_frame.getContentPane().removeAll();
-                        LoadNextMapTypeForNewVersion(main_frame, newMaps, myPicViewer);
+                        LoadNextMapTypeForMidVersion(main_frame, newMaps, myPicViewer);
                     }
                 };
                 now.addActionListener(listener);
             }
             jPanel.setPreferredSize(new Dimension(260, currentHeight+10));
             //jPanel.setLocation(scrSize.width / 2 - 130, scrSize.height / 2 - currentHeight / 2);
-            JPanel QueryPanel = GetQueryFieldForNewVersion(main_frame, myPicViewer);
+            JPanel QueryPanel = GetQueryFieldForNewVersion(main_frame);
             main_frame.add(QueryPanel);
             main_frame.add(jPanel);
             System.out.println(jPanel.getPreferredSize().getHeight());
@@ -1847,6 +2105,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setIconImage(getToolkit().getImage("C:/lzyFile/白底LOGO1.png"));
 
+        //System.out.println(pts==null);
         createToolBarButtonsForNewVersion(this);
         //setToolBarComponentsEnabled(true, false, false, false, false, true);
 
@@ -1919,6 +2178,8 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
         setVisible(true);
         view.setZoomFactor(1);
+        ShowXZQTreeWindow();
+        PopWindow.setVisible(true);
     }
 
     public MyPicViewer(String path, String name, PointF[] pts, List<Map> maps) {
@@ -1999,6 +2260,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
         setVisible(true);
         view.setZoomFactor(1);
+        PopWindow.setVisible(true);
     }
 
     public MyPicViewer(String path, JFrame frame, String name, PointF[] pts, List<Map> maps) {
@@ -2079,6 +2341,8 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
         setVisible(true);
         view.setZoomFactor(1);
+        ShowXZQTreeWindow();
+        PopWindow.setVisible(true);
     }
 
     private class ToolbarButton extends JButton {
@@ -2158,7 +2422,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
         //加入垂直滑块
         JScrollPane scrollPane = new JScrollPane(OtherTypeMapPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //PopWindow.add(jPanel);
         ShowPopWindow(scrollPane);
     }
@@ -2167,11 +2431,14 @@ final class MyPicViewer extends ToolBarStatusFrame {
     显示目录弹出框
      */
     private void ShowPopWindow(JScrollPane scrollPane){
+        //PopWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         PopWindow.add(scrollPane);
-        PopWindow.setSize(260, (int)scrollPane.getPreferredSize().getHeight() + 50);
+        //PopWindow.setSize(260, (int)scrollPane.getPreferredSize().getHeight() + 50);
+        PopWindow.setSize(260, 600);
         PopWindow.setIconImage(getToolkit().getImage("C:/lzyFile/白底LOGO1.png"));
         PopWindow.repaint();
         PopWindow.setVisible(true);
+        PopWindow.setLocation(0,50);
         PopWindow.setAlwaysOnTop(true);
     }
 
@@ -2361,16 +2628,73 @@ final class MyPicViewer extends ToolBarStatusFrame {
     /*
     显示其他类型地图的窗体，用于初次显示
      */
+    private void ShowOtherTypeMapWindowForLC(){
+        InitOtherTypeMapWindow();
+        int size = 0;
+
+        List<String> list = new ArrayList<>();
+
+        list.add("临沧概览");
+        for (int i = 0; i < maps.size(); i++) {
+            if (maps.get(i).getParentNode().equals("临沧概览"))
+            {
+                list.add(maps.get(i).getName());
+            }
+        }
+        list.add("社会与经济");
+        list.add("资源与环境");
+
+        for (int i = 0; i < list.size(); i++) {
+            final String btName = list.get(i);
+            JButton now = new JButton(btName);
+            ActionListener listener = new ActionListener() {
+                public void actionPerformed(ActionEvent event) {
+                    if (btName.equals("社会与经济"))
+                        ShowOtherTypeMapWindowForSociety();
+                    else if (btName.equals("资源与环境"))
+                        ShowOtherTypeMapWindowForEarth();
+                    else if (btName.equals("临沧概览"))
+                        ShowOtherTypeMapWindow();
+                    else {
+                        if (btName.contains("行政区划") || btName.contains("旅游交通")){
+                            btn_AreaMessure.setVisible(true);
+                            btn_DistanceMessure.setVisible(true);
+                            btn_autoTrans.setVisible(true);
+                            LoadMap(btName);
+                        }else {
+                            btn_AreaMessure.setVisible(false);
+                            btn_DistanceMessure.setVisible(false);
+                            btn_autoTrans.setVisible(false);
+                            LoadMap(btName);
+                            view.setThematicMap(true);
+                        }
+                    }
+                }
+            };
+            if (!btName.equals("社会与经济") && !btName.equals("资源与环境") && !btName.equals("临沧概览"))
+                now.setBackground(Color.GRAY);
+            now.addActionListener(listener);
+            now.setPreferredSize(new Dimension(200, 50));
+            OtherTypeMapPanel.add(now);
+            size++;
+        }
+        AdjustAndShowOtherTypeMapWindow(size);
+    }
+
+    /*
+    显示其他类型地图的窗体，用于初次显示
+     */
     private void ShowOtherTypeMapWindowForEarth(){
         InitOtherTypeMapWindow();
         int size = 0;
 
         List<String> list = new ArrayList<>();
 
-        list.add("社会经济图组");
-        list.add("资源与环境图组");
+        list.add("临沧概览");
+        list.add("社会与经济");
+        list.add("资源与环境");
         for (int i = 0; i < maps.size(); i++) {
-            if (maps.get(i).getParentNode().equals("资源与环境图组"))
+            if (maps.get(i).getParentNode().equals("资源与环境"))
             {
                 list.add(maps.get(i).getName());
             }
@@ -2381,10 +2705,12 @@ final class MyPicViewer extends ToolBarStatusFrame {
             JButton now = new JButton(btName);
             ActionListener listener = new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
-                    if (btName.equals("社会经济图组"))
+                    if (btName.equals("社会与经济"))
                         ShowOtherTypeMapWindowForSociety();
-                    else if (btName.equals("资源与环境图组"))
+                    else if (btName.equals("资源与环境"))
                         ShowOtherTypeMapWindow();
+                    else if (btName.equals("临沧概览"))
+                        ShowOtherTypeMapWindowForLC();
                     else {
                         btn_AreaMessure.setVisible(false);
                         btn_DistanceMessure.setVisible(false);
@@ -2394,7 +2720,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
                     }
                 }
             };
-            if (!btName.equals("社会经济图组") && !btName.equals("资源与环境图组"))
+            if (!btName.equals("社会与经济") && !btName.equals("资源与环境") && !btName.equals("临沧概览"))
                 now.setBackground(Color.GRAY);
             now.addActionListener(listener);
             now.setPreferredSize(new Dimension(200, 50));
@@ -2413,24 +2739,27 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
         List<String> list = new ArrayList<>();
 
-        list.add("社会经济图组");
+        list.add("临沧概览");
+        list.add("社会与经济");
         for (int i = 0; i < maps.size(); i++) {
-            if (maps.get(i).getParentNode().equals("社会经济图组"))
+            if (maps.get(i).getParentNode().equals("社会与经济"))
             {
                 list.add(maps.get(i).getName());
             }
         }
-        list.add("资源与环境图组");
+        list.add("资源与环境");
 
         for (int i = 0; i < list.size(); i++) {
             final String btName = list.get(i);
             JButton now = new JButton(btName);
             ActionListener listener = new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
-                    if (btName.equals("社会经济图组"))
+                    if (btName.equals("社会与经济"))
                         ShowOtherTypeMapWindow();
-                    else if (btName.equals("资源与环境图组"))
+                    else if (btName.equals("资源与环境"))
                         ShowOtherTypeMapWindowForEarth();
+                    else if (btName.equals("临沧概览"))
+                        ShowOtherTypeMapWindowForLC();
                     else {
                         btn_AreaMessure.setVisible(false);
                         btn_DistanceMessure.setVisible(false);
@@ -2440,7 +2769,7 @@ final class MyPicViewer extends ToolBarStatusFrame {
                     }
                 }
             };
-            if (!btName.equals("社会经济图组") && !btName.equals("资源与环境图组"))
+            if (!btName.equals("社会与经济") && !btName.equals("资源与环境") && !btName.equals("临沧概览"))
                 now.setBackground(Color.GRAY);
             now.addActionListener(listener);
             now.setPreferredSize(new Dimension(200, 50));
@@ -2459,8 +2788,9 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
         List<String> list = new ArrayList<>();
 
-        list.add("社会经济图组");
-        list.add("资源与环境图组");
+        list.add("临沧概览");
+        list.add("社会与经济");
+        list.add("资源与环境");
 
         /*for (int i = 0; i < maps.size(); i++) {
             if (maps.get(i).getMapGeoInfo() != null)
@@ -2482,10 +2812,12 @@ final class MyPicViewer extends ToolBarStatusFrame {
             JButton now = new JButton(btName);
             ActionListener listener = new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
-                    if (btName.equals("社会经济图组"))
+                    if (btName.equals("社会与经济"))
                         ShowOtherTypeMapWindowForSociety();
-                    else if (btName.equals("资源与环境图组"))
+                    else if (btName.equals("资源与环境"))
                         ShowOtherTypeMapWindowForEarth();
+                    else if (btName.equals("临沧概览"))
+                        ShowOtherTypeMapWindowForLC();
                 }
             };
             now.addActionListener(listener);
@@ -2611,7 +2943,8 @@ final class MyPicViewer extends ToolBarStatusFrame {
 
         btn_Search = new ToolbarButton("搜索", "icons/search透明.png", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OpenOldVersionElectricAtlasForNewVersion(mypdfviewer);
+                OpenOldVersionElectricAtlasForMidVersion(mypdfviewer);
+
             }
         });
 

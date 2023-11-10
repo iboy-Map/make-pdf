@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TuzhiForPdfbox">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/TuzhiForPdfbox_jar/TuzhiForPdfbox.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

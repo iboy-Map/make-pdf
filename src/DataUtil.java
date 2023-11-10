@@ -1,8 +1,6 @@
 import java.text.DecimalFormat;
 
 public class DataUtil {
-
-
     //坐标拉伸算法
     public static String rubberCoordinate(String MediaBox, String BBox, String GPTS) {
         String[] MediaBoxString = MediaBox.split(" ");
@@ -18,15 +16,9 @@ public class DataUtil {
         }
         for (int i = 0; i < BBoxString.length; ++i) {
             BBoxs[i] = Float.valueOf(BBoxString[i]);
-            //locError("BBoxs : " + Float.toString(BBoxs[i]));
         }
         //优化BBOX拉伸算法
         float del;
-        /*if (BBoxs[0] > BBoxs[2]){
-            del = BBoxs[0];
-            BBoxs[0] = BBoxs[2];
-            BBoxs[2] = del;
-        }*/
         if (BBoxs[1] < BBoxs[3]) {
             del = BBoxs[1];
             BBoxs[1] = BBoxs[3];
@@ -80,14 +72,9 @@ public class DataUtil {
             pt_rb.y = pt_rb.y - (delta_long / delta_width * (pt1_rb.x - 1));
             pt_rt.x = pt_rt.x - (delta_lat / delta_height * (pt1_rt.y - 1));
             pt_rt.y = pt_rt.y - (delta_long / delta_width * (pt1_rt.x - 1));
-            /*m_center_x = ( pt_lb.x + pt_lt.x + pt_rb.x + pt_rt.x) / 4;
-            m_center_y = ( pt_lb.y + pt_lt.y + pt_rb.y + pt_rt.y) / 4;*/
-            //locError("GETGPTS: " + Double.toString(m_center_x));
+
             GPTS = Float.toString(pt_lb.x) + " " + Float.toString(pt_lb.y) + " " + Float.toString(pt_lt.x) + " " + Float.toString(pt_lt.y) + " " + Float.toString(pt_rt.x) + " " + Float.toString(pt_rt.y) + " " + Float.toString(pt_rb.x) + " " + Float.toString(pt_rb.y);
         } else {
-            /*m_center_x = ( GPTSs[0] + GPTSs[2] + GPTSs[4] + GPTSs[6]) / 4;
-            m_center_y = ( GPTSs[1] + GPTSs[3] + GPTSs[5] + GPTSs[7]) / 4;*/
-            //locError("GETGPTS: " + Double.toString(m_center_x));
         }
         return GPTS;
 
@@ -153,9 +140,6 @@ public class DataUtil {
                     }
                 }
             }
-            //GPTS = Float.toString(pt_lb.x) + " " + Float.toString(pt_lb.y) + " " + Float.toString(pt_lt.x) + " " + Float.toString(pt_lt.y) + " " + Float.toString(pt_rt.x) + " " + Float.toString(pt_rt.y) + " " + Float.toString(pt_rb.x) + " " + Float.toString(pt_rb.y);
-            //locError(GPTS);
-            //
             //构建LPTS 矩形
             //预处理LPTS
             for (int i = 0; i < LPTSs.length; ++i){
@@ -195,11 +179,7 @@ public class DataUtil {
             pt_rt.x = pt_rt.x - (delta_lat / delta_height * (pt_rt1.x - 1));
             pt_rt.y = pt_rt.y - (delta_long / delta_width * (pt_rt1.y - 1));
             GPTS = Float.toString(pt_lb.x) + " " + Float.toString(pt_lb.y) + " " + Float.toString(pt_lt.x) + " " + Float.toString(pt_lt.y) + " " + Float.toString(pt_rt.x) + " " + Float.toString(pt_rt.y) + " " + Float.toString(pt_rb.x) + " " + Float.toString(pt_rb.y);
-            //locError(GPTS);
-            //
-            //
         }
-        //locError(Boolean.toString(isDrift));
         return GPTS;
     }
 
@@ -228,55 +208,7 @@ public class DataUtil {
 
     //将角度转化为弧度
     private static double rad(double d) {
-
         return d * Math.PI / 180.00; //角度转换成弧度
-
     }
-    /*
-    public static void GetGPTSInfo(String MGPTS){
-        String[] GPTString = MGPTS.split(" ");
-        float[] GPTSs = new float[GPTString.length];
-        for (int i = 0; i < GPTString.length; ++i) {
-            if (MGPTS != null && !MGPTS.isEmpty())
-                GPTSs[i] = Float.valueOf(GPTString[i]);
-        }
-        float lat_axis, long_axis;
-        PointF pt_lb = new PointF(), pt_rb = new PointF(), pt_lt = new PointF(), pt_rt = new PointF();
-        lat_axis = (GPTSs[0] + GPTSs[2] + GPTSs[4] + GPTSs[6]) / 4;
-        long_axis = (GPTSs[1] + GPTSs[3] + GPTSs[5] + GPTSs[7]) / 4;
-        for (int i = 0; i < GPTSs.length; i = i + 2) {
-            if (GPTSs[i] < lat_axis) {
-                if (GPTSs[i + 1] < long_axis) {
-                    pt_lb.x = GPTSs[i];
-                    pt_lb.y = GPTSs[i + 1];
-                } else {
-                    pt_rb.x = GPTSs[i];
-                    pt_rb.y = GPTSs[i + 1];
-                }
-            } else {
-                if (GPTSs[i + 1] < long_axis) {
-                    pt_lt.x = GPTSs[i];
-                    pt_lt.y = GPTSs[i + 1];
-                } else {
-                    pt_rt.x = GPTSs[i];
-                    pt_rt.y = GPTSs[i + 1];
-                }
-            }
-        }
-        float mmin_lat = (pt_lb.x + pt_rb.x) / 2;
-        float mmax_lat = (pt_lt.x + pt_rt.x) / 2;
-        float mmin_long = (pt_lt.y + pt_lb.y) / 2;
-        float mmax_long = (pt_rt.y + pt_rb.y) / 2;
-        if (mmax_lat > max_lat && mmin_lat < min_lat && mmax_long > max_long && mmin_long < min_long) {
-            float thedelta1 = Math.abs(cs_top - mmax_lat) + Math.abs(cs_bottom - mmin_lat) + Math.abs(cs_right - mmax_long) + Math.abs(cs_left - mmin_long);
-            if (thedelta == 0) {
-                thedelta = thedelta1;
-                thenum = j;
-            } else if (thedelta1 < thedelta) {
-                thedelta = thedelta1;
-                thenum = j;
-            }
 
-        }
-    }*/
 }
